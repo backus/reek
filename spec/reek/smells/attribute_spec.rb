@@ -22,7 +22,7 @@ RSpec.describe Reek::Smells::Attribute do
         end
       EOS
 
-      expect(src).to_not reek_of(described_class)
+      expect(src).not_to reek_of(described_class)
     end
   end
 
@@ -34,7 +34,7 @@ RSpec.describe Reek::Smells::Attribute do
           attr_reader :my_attr2
         end
       EOS
-      expect(src).to_not reek_of(described_class)
+      expect(src).not_to reek_of(described_class)
     end
 
     it 'records writer attribute' do
@@ -99,7 +99,7 @@ RSpec.describe Reek::Smells::Attribute do
         end
       EOS
 
-      expect(src).to_not reek_of(described_class)
+      expect(src).not_to reek_of(described_class)
     end
 
     it "doesn't record private attributes" do
@@ -114,7 +114,7 @@ RSpec.describe Reek::Smells::Attribute do
         end
       EOS
 
-      expect(src).to_not reek_of(described_class)
+      expect(src).not_to reek_of(described_class)
     end
 
     it 'records attr_writer defined in public section' do
