@@ -23,7 +23,6 @@ RSpec.describe Reek::Smells::IrresponsibleModule do
         class Inner
         end
       end
-
     EOS
 
     expect(src).to reek_of(described_class,
@@ -160,12 +159,11 @@ RSpec.describe Reek::Smells::IrresponsibleModule do
       expect(src).not_to reek_of(:IrresponsibleModule)
     end
 
-    # TODO: Re-enable and fix.
-    xit "reports a #{scope} defined through assignment" do
+    it "reports a #{scope} defined through assignment" do
       src = <<-EOS
         # Outer is responsible, but Dummy is not
         #{scope} Outer
-          Dummy = Class.new Bar # <- Use #{scope} here!
+          Dummy = Class.new Bar # Only "class" is supposed to reek here.
         end
       EOS
 
