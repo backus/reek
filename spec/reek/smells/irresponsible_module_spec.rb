@@ -26,8 +26,8 @@ RSpec.describe Reek::Smells::IrresponsibleModule do
     EOS
 
     expect(src).to reek_of(described_class,
-                               lines:   [1],
-                               context: 'Outer')
+                           lines:   [1],
+                           context: 'Outer')
     expect(src).to reek_of(described_class,
                            lines:   [4],
                            context: 'Outer::Inner')
