@@ -26,8 +26,9 @@ RSpec.describe Reek::Smells::ClassVariable do
       end
     EOS
 
-    expect(src).to reek_of(described_class, name: '@@very_klassy')
-    expect(src).to reek_of(described_class, name: '@@super_klassy')
+    expect(src).
+      to reek_of(described_class, name: '@@very_klassy').
+      and reek_of(described_class, name: '@@super_klassy')
   end
 
   it 'does not report class instance variables' do
@@ -37,7 +38,7 @@ RSpec.describe Reek::Smells::ClassVariable do
       end
     EOS
 
-    expect(src).to_not reek_of(described_class)
+    expect(src).not_to reek_of(described_class)
   end
 
   context 'with no class variables' do
@@ -48,7 +49,7 @@ RSpec.describe Reek::Smells::ClassVariable do
         end
       EOS
 
-      expect(src).to_not reek_of(described_class)
+      expect(src).not_to reek_of(described_class)
     end
 
     it 'records nothing in the module' do
@@ -58,7 +59,7 @@ RSpec.describe Reek::Smells::ClassVariable do
         end
       EOS
 
-      expect(src).to_not reek_of(described_class)
+      expect(src).not_to reek_of(described_class)
     end
   end
 
